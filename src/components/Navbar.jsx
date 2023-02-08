@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
-import { Badge, IconButton } from "@mui/material";
+import { Badge } from "@mui/material";
 import { ShoppingCartOutlined } from "@mui/icons-material";
 
 const Container = styled.div`
