@@ -3,9 +3,11 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import { ShoppingCartOutlined } from "@mui/icons-material";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   height: 60px;
+  ${mobile({ backgroundColor: "red" })}
 `;
 
 const Wrapper = styled.div`
