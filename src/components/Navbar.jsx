@@ -40,12 +40,13 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none;
-  ${mobile({ width: "50px" })}
+  ${mobile({ width: "90px" })}
 `;
 
 const Center = styled.div`
   flex: 1;
   text-align: center;
+  ${mobile({ textAlign: "end", paddingRight: "15px" })}
 `;
 
 const Logo = styled.h1`
@@ -58,7 +59,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  ${mobile({ flex: 1.5, justifyContent: "center" })}
 `;
 
 const MenuItem = styled.div`
