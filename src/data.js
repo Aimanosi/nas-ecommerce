@@ -28,20 +28,20 @@ export const categories = [
     id: 1,
     img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg",
     title: "WOMEN STYLE",
-    cat: "woman",
+    cat: "Women",
   },
 
   {
     id: 2,
     img: "https://images.asos-media.com/products/collusion-lace-beach-shirt-co-ord-in-neon-orange/202487681-1-orange?$n_750w$&wid=750&fit=constrain",
     title: "MEN STYLE",
-    cat: "man",
+    cat: "Men",
   },
   {
     id: 3,
     img: "https://images.asos-media.com/groups/adidas-originals-unisex-preppy-varsity-tracksuit-in-navy/103044-group-1?$n_480w$&wid=476&fit=constrain",
     title: "ACTIVE WEAR",
-    cat: "active",
+    cat: "Activewear",
   },
 ];
 
