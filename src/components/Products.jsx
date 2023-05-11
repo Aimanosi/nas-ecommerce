@@ -23,7 +23,6 @@ const Products = ({ cat, filters, sort }) => {
             : "http://localhost:5000/api/products"
         );
         setProducts(res.data);
-        console.log(res.data);
       } catch (err) {}
     };
     getProducts();
@@ -61,7 +60,7 @@ const Products = ({ cat, filters, sort }) => {
       {cat
         ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
         : products
-            // .slice(0, 10)
+            .slice(0, 10)
             .map((item) => <Product item={item} key={item.id} />)}
     </Container>
   );
