@@ -1,14 +1,14 @@
-import { Add, Remove } from "@mui/icons-material";
+import { Add, Remove } from "@material-ui/icons";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -44,11 +44,10 @@ const TopButton = styled.button`
 const TopTexts = styled.div`
   ${mobile({ display: "none" })}
 `;
-
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
-  margin: 0 10px;
+  margin: 0px 10px;
 `;
 
 const Bottom = styled.div`
@@ -68,8 +67,8 @@ const Product = styled.div`
 `;
 
 const ProductDetail = styled.div`
-  display: flex;
   flex: 2;
+  display: flex;
 `;
 
 const Image = styled.img`
@@ -99,35 +98,27 @@ const ProductSize = styled.span``;
 const PriceDetail = styled.div`
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  ${mobile({
-    flexDirection: "row",
-    justifyContent: "space-around",
-    margin: "15px 0",
-  })}
 `;
 
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  background-color: #f1f1f1;
-  padding: 5px 20px;
-  ${mobile({ marginBottom: "0px", padding: "5px 20px" })}
 `;
 
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
-  padding: 0px 30px;
+  ${mobile({ margin: "5px 15px" })}
 `;
 
 const ProductPrice = styled.div`
   font-size: 30px;
-  font-weight: 400;
-  ${mobile({ top: "0px" })}
+  font-weight: 200;
+  ${mobile({ marginBottom: "20px" })}
 `;
 
 const Hr = styled.hr`
@@ -147,13 +138,15 @@ const Summary = styled.div`
 const SummaryTitle = styled.h1`
   font-weight: 200;
 `;
+
 const SummaryItem = styled.div`
-  margin: 30px 0;
+  margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "800"};
+  font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
 `;
+
 const SummaryItemText = styled.span``;
 
 const SummaryItemPrice = styled.span``;
@@ -182,12 +175,16 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: 500,
         });
-        history.push("/success", { data: res.data });
+        history("/success", {
+          stripeData: res.data,
+          products: cart,
+        });
       } catch {}
     };
-    stripeToken && makeRequest();
+    if (stripeToken) {
+      makeRequest();
+    }
   }, [stripeToken, cart.total, history]);
-
   return (
     <Container>
       <Navbar />
@@ -198,7 +195,7 @@ const Cart = () => {
           <TopButton>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist</TopText>
+            <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
@@ -241,31 +238,27 @@ const Cart = () => {
               <SummaryItemText>Subtotal</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
-
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
               <SummaryItemPrice>$ 5.90</SummaryItemPrice>
             </SummaryItem>
-
             <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
               <SummaryItemPrice>$ -5.90</SummaryItemPrice>
             </SummaryItem>
-
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <StripeCheckout
-              name="Nas"
-              image="http://avatars.githubusercontent.com/u/1486366?v=4"
+              name="Lama Shop"
+              image="https://avatars.githubusercontent.com/u/1486366?v=4"
               billingAddress
               shippingAddress
-              description={`your total is $${cart.total}`}
+              description={`Your total is $${cart.total}`}
               amount={cart.total * 100}
               token={onToken}
               stripeKey={KEY}
-              // Add any other props you need
             >
               <Button>CHECKOUT NOW</Button>
             </StripeCheckout>
