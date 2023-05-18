@@ -184,7 +184,7 @@ const Cart = () => {
     if (stripeToken) {
       makeRequest();
     }
-  }, [stripeToken, cart.total, history]);
+  }, [stripeToken, cart.total, history, cart]);
   return (
     <Container>
       <Navbar />
