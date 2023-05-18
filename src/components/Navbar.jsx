@@ -85,7 +85,7 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>NASS.</Logo>
+          <Logo>NASSSS.</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
