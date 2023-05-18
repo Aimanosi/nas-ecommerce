@@ -82,7 +82,9 @@ const Product = ({ item }) => {
         </Icon>
 
         <Icon>
-          <Link to={`/product/${item._id}`}>
+          <Link
+            to={`https://ecommerce-app-rest-api.onrender.com/api/product/${item._id}`}
+          >
             <SearchOutlined />
           </Link>
         </Icon>
