@@ -83,7 +83,7 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>NAS.</Logo>
+        <Logo>NASS.</Logo>
         <Desc>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
           quaerat ipsa, hic labore enim iste voluptate blanditiis, rerum

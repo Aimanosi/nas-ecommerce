@@ -54,6 +54,7 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
+  margin-bottom: 2rem;
 `;
 
 const Info = styled.div`
@@ -171,10 +172,13 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: 500,
-        });
+        const res = await userRequest.post(
+          "https://ecommerce-app-rest-api.onrender.com/api/checkout/payment",
+          {
+            tokenId: stripeToken.id,
+            amount: 500,
+          }
+        );
         history("/success", {
           stripeData: res.data,
           products: cart,
@@ -251,7 +255,7 @@ const Cart = () => {
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <StripeCheckout
-              name="Lama Shop"
+              name="Nas Shop"
               image="https://avatars.githubusercontent.com/u/1486366?v=4"
               billingAddress
               shippingAddress
