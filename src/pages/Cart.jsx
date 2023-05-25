@@ -54,7 +54,6 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
-  margin-bottom: 2rem;
 `;
 
 const Info = styled.div`
@@ -65,6 +64,7 @@ const Product = styled.div`
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
+  margin-bottom: 2rem;
 `;
 
 const ProductDetail = styled.div`
@@ -74,6 +74,7 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
+  border-radius: 15px;
 `;
 
 const Details = styled.div`
@@ -102,12 +103,20 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  ${mobile({
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: "40px",
+  })}
 `;
 
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  background-color: #f1f1f1;
+  padding: 0 10px;
 `;
 
 const ProductAmount = styled.div`

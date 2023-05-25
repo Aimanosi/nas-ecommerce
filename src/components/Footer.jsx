@@ -85,10 +85,11 @@ const Footer = () => {
       <Left>
         <Logo>NASS.</Logo>
         <Desc>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-          quaerat ipsa, hic labore enim iste voluptate blanditiis, rerum
-          architecto consectetur in modi nobis recusandae suscipit quo minima,
-          quas laborum!
+          This e-commerce app serves as a practical learning project to
+          understand the fundamental principles of developing a full-stack
+          e-commerce application. The frontend was created with React, while the
+          backend was implemented using Node.js and Express, allowing for a
+          comprehensive understanding of the app's construction!
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">
