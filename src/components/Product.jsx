@@ -1,11 +1,8 @@
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from "@mui/icons-material";
-import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { Link } from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -24,7 +21,7 @@ const Info = styled.div`
 `;
 
 const Container = styled.div`
-  flex: 1;
+  /* flex: 1; */
   margin: 5px;
   min-width: 280px;
   height: 350px;
@@ -33,12 +30,10 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
-
   &:hover ${Info} {
     opacity: 1;
   }
 `;
-
 const Circle = styled.div`
   width: 200px;
   height: 200px;
@@ -46,10 +41,9 @@ const Circle = styled.div`
   background-color: white;
   position: absolute;
 `;
-
 const Image = styled.img`
-  height: 75%;
   width: 75%;
+  height: 100%;
   object-fit: cover;
   z-index: 2;
 `;
@@ -70,28 +64,55 @@ const Icon = styled.div`
     transform: scale(1.1);
   }
 `;
+const MainContainer = styled.div`
+  flex: 1;
+  /* margin: 5px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+`;
+const Detail = styled.div`
+  display: block;
+  justify-content: start;
+  text-align: start;
+  margin-bottom: 20px;
+`;
+const Title = styled.div`
+  margin-bottom: 15px;
+  font-size: 10px;
+`;
+const Price = styled.span`
+  font-weight: bold;
+`;
 
 const Product = ({ item }) => {
   return (
-    <Container>
-      <Circle />
-      <Image src={item.img} />
-      <Info>
-        <Icon>
-          <ShoppingCartOutlined />
-        </Icon>
+    <MainContainer>
+      <Container>
+        <Circle />
+        <Image src={item.img} />
+        <Info>
+          <Icon>
+            <ShoppingCartOutlinedIcon />
+          </Icon>
+          <Icon>
+            <Link to={`/product/${item._id}`}>
+              <SearchOutlinedIcon />
+            </Link>
+          </Icon>
+          <Icon>
+            <FavoriteBorderOutlinedIcon />
+          </Icon>
+        </Info>
+      </Container>
 
-        <Icon>
-          <Link to={`/product/${item._id}`}>
-            <SearchOutlined />
-          </Link>
-        </Icon>
-
-        <Icon>
-          <FavoriteBorderOutlined />
-        </Icon>
-      </Info>
-    </Container>
+      <Detail>
+        <Title>{item.title}</Title>
+        <Price> ${item.price}</Price>
+      </Detail>
+    </MainContainer>
   );
 };
 

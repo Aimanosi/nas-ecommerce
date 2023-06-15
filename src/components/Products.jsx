@@ -10,9 +10,21 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust height as needed */
+`;
+
+const LoadingText = styled.p`
+  font-size: 18px;
+`;
+
 const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
     const getProducts = async () => {
@@ -23,7 +35,11 @@ const Products = ({ cat, filters, sort }) => {
             : "https://ecommerce-app-rest-api.onrender.com/api/products"
         );
         setProducts(res.data);
-      } catch (err) {}
+      } catch (err) {
+        // Handle error if necessary
+      } finally {
+        setLoading(false); // Set loading to false when data is fetched
+      }
     };
     getProducts();
   }, [cat]);
@@ -54,6 +70,14 @@ const Products = ({ cat, filters, sort }) => {
       );
     }
   }, [sort]);
+
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <LoadingText>Loading...</LoadingText>
+      </LoadingContainer>
+    );
+  }
 
   return (
     <Container>
